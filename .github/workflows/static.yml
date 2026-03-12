@@ -2,16 +2,16 @@ name: Deploy React App
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
     
     steps:
       - uses: actions/checkout@v3
@@ -36,15 +36,5 @@ jobs:
           path: './build'
       
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v2
-```
-
-### 6. Salva
-- Clicca **"Commit changes"** (pulsante verde in alto a destra)
-- Nella finestra che si apre, clicca di nuovo **"Commit changes"**
-
----
-
-**Aspetta 2-3 minuti** e la tua app sarà live su:
-```
-https://TUO-USERNAME.github.io/epso-quiz-app
